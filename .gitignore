@@ -1,0 +1,9 @@
+#ERROR FIXES
+    #manage.py migrate --run-syncdb
+    #docker compose up
+**/migrations
+*.DS_Store
+**/__pycache__
+**/.DS_Store
+/venv/
+/db/
