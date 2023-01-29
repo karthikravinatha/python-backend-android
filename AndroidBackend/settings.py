@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'sign_up',
     'roles',
+    'tools',
 ]
 
 MIDDLEWARE = [
