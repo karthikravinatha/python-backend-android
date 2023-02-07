@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "sslserver",
+    # "sslserver",
     'rest_framework',
     'corsheaders',
     'sign_up',
