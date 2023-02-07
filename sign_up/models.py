@@ -11,7 +11,7 @@ class UserModel(AbstractBaseUser):
     user_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
-    mobile_number = models.IntegerField(validators=[MaxLengthValidator(9999999999)],null=False, blank=False)
+    mobile_number = models.CharField(max_length=12, null=False, blank=False)
     email_id = models.EmailField(verbose_name='email address', max_length=255, unique=True)
     is_active = models.BooleanField(default=True)
     is_super_user = models.BooleanField(default=False)

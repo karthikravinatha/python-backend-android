@@ -21,7 +21,7 @@ class UserViews(CreateAPIView):
         serializer.save()
         response = {
             'success': 'True',
-            'status code': status.HTTP_200_OK,
+            'status_code': status.HTTP_200_OK,
             'message': 'User registered  successfully',
         }
         status_code = status.HTTP_200_OK
