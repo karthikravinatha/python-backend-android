@@ -9,6 +9,7 @@ from django.core.validators import MaxLengthValidator
 # Create your models here.
 class UserModel(AbstractBaseUser):
     user_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    entity_id = models.UUIDField(default=None)
     first_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255, blank=True)
     mobile_number = models.CharField(max_length=12, null=False, blank=False)

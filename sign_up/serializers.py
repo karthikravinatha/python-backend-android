@@ -1,3 +1,5 @@
+from abc import ABC
+
 from django.contrib.auth.models import update_last_login
 from rest_framework import serializers
 from .models import UserModel
@@ -12,12 +14,18 @@ JWT_ENCODE_HANDLER = api_settings.JWT_ENCODE_HANDLER
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
-        fields = ('email_id', 'first_name', 'last_name', 'mobile_number', 'password')
+        fields = ('email_id', 'entity_id', 'first_name', 'last_name', 'mobile_number', 'is_super_user', 'password')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
         user = UserModel.objects.create(**validated_data)
         return user
+
+
+class UserListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserModel
+        fields = "__all__"
 
 
 class UserLoginSerializer(serializers.Serializer):

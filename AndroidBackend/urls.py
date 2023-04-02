@@ -20,6 +20,7 @@ api_urls = [
     path('user/', include('sign_up.urls')),
     path('roles/', include('roles.urls')),
     path('tools/', include('tools.urls')),
+    path('entity/', include('entity.urls')),
 ]
 
 urlpatterns = [

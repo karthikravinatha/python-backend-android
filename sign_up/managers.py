@@ -4,12 +4,12 @@ from django.utils.translation import gettext
 
 
 class UserManager(BaseUserManager):
-    def create(self, first_name, last_name, mobile_number, email_id, password):
+    def create(self, entity_id, first_name, last_name, mobile_number, email_id, is_super_user, password):
         if not email_id:
             raise ValueError(gettext("User Must Have email address"))
 
         user = self.model(first_name=first_name, last_name=last_name, mobile_number=mobile_number,
-                          email_id=email_id)
+                          email_id=email_id, entity_id=entity_id, is_super_user=is_super_user)
         encrypted_password = make_password(password)
         user.password = encrypted_password
         # user.set_password(password) # this is not working

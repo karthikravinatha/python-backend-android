@@ -1,15 +1,15 @@
 from django.shortcuts import render
 from rest_framework import viewsets, status
-from rest_framework.generics import CreateAPIView, RetrieveAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView, ListAPIView, ListCreateAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 
-from .serializers import UserSerializer, UserLoginSerializer
+from .serializers import UserSerializer, UserLoginSerializer, UserListSerializer
 from .models import UserModel
 
 
 # Create your views here.
-class UserViews(CreateAPIView):
+class UserViews(CreateAPIView, RetrieveAPIView):
     serializer_class = UserSerializer
     permission_classes = (AllowAny,)
     authentication_classes = []
@@ -26,6 +26,14 @@ class UserViews(CreateAPIView):
         }
         status_code = status.HTTP_200_OK
         return Response(response, status=status_code)
+
+    def get_queryset(self):
+        return UserModel.objects.all()
+
+    def retrieve(self, request, *args, **kwargs):
+        # instance = UserModel.objects.all().values()
+        serialiser = UserListSerializer(self.get_queryset(), many=True)
+        return Response(serialiser.data)
 
 
 class UserLoginViews(RetrieveAPIView):

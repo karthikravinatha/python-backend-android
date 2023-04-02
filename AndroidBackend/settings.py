@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'sign_up',
     'roles',
     'tools',
+    'entity',
+    'entity_address'
 ]
 
 MIDDLEWARE = [
@@ -80,13 +82,18 @@ WSGI_APPLICATION = 'AndroidBackend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgresrds',
-        'USER': 'postgres',
-        'PASSWORD': 'Kar#8835',
-        'HOST': 'devdb.cemdnia1js5m.us-east-1.rds.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'postgresrds',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'Kar#8835',
+    #     'HOST': 'devdb.cemdnia1js5m.us-east-1.rds.amazonaws.com',
+    #     'PORT': '5432',
+    # }
 
     # 'default': {
     #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
